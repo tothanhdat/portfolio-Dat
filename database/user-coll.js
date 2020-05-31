@@ -5,7 +5,9 @@ const userSchema = new Schema({
 
     //Thông tin đăng ký 
 
-    fullname: String,
+    firstName: String,
+
+    lastName: String,
 
     email: { type: String, required: true, unique: true },
 
@@ -20,8 +22,6 @@ const userSchema = new Schema({
     age: String,
 
     story: String,
-    
-    degree: String, //trình độ
 
     phone: String,
 

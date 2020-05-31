@@ -3,9 +3,12 @@ const app               = express();
 const bodyParser        = require('body-parser');
 const mongoose          = require('mongoose');
 const expressSession    = require('express-session');
+const moment            = require('moment');
+
 // const multer            = require('multer');
 
-const USER_ROUTER   = require('./routes/user');
+const USER_ROUTER           = require('./routes/user');
+const TOTHANHDAT_ROUTER     = require('./routes/tothanhdat');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -24,10 +27,12 @@ app.use(expressSession({
 }))
 
 app.use('/user', USER_ROUTER);
+app.use('/tothanhdat', TOTHANHDAT_ROUTER);
 
 app.get('/', async (req, res) => {
     res.render('pages/home')
 })
+
 
 const uri = 'mongodb://localhost/portfolio_dat';
 const PORT = process.env.PORT || 3000;

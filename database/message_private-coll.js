@@ -1,0 +1,1 @@
+// Người lạ để lại lời nhắn

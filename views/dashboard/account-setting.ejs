@@ -1,0 +1,217 @@
+<%- include ('../partials/sidebar') %>
+<%- include ('../partials/header') %>
+         <style>
+         .inputfile {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+         }
+         </style>
+         <% if (infoUser) { %>
+         <!-- Right Sidebar Panel Start-->
+         <div class="right-sidebar-mini right-sidebar">
+            <div class="right-sidebar-panel p-0">
+               <div class="iq-card shadow-none">
+                  <div class="iq-card-body p-0">
+                     <div class="media-height p-3">
+                        <div class="media align-items-center mb-4">
+                           <div class="iq-profile-avatar status-online">
+                              <img class="rounded-circle avatar-50" src="../dashboard/images/user/01.jpg" alt>
+                           </div>
+                           <div class="media-body ml-3">
+                              <h6 class="mb-0"><a href="#">Anna Sthesia</a></h6>
+                              <p class="mb-0">Admin</p>
+                           </div>
+                        </div>
+                        <div class="media align-items-center mb-4">
+                           <div class="iq-profile-avatar status-online">
+                              <img class="rounded-circle avatar-50" src="../dashboard/images/user/02.jpg" alt>
+                           </div>
+                           <div class="media-body ml-3">
+                              <h6 class="mb-0"><a href="#">Paul Molive</a></h6>
+                              <p class="mb-0">Admin</p>
+                           </div>
+                        </div>
+                        
+                        <div class="media align-items-center">
+                           <div class="iq-profile-avatar">
+                              <img class="rounded-circle avatar-50" src="../dashboard/images/user/02.jpg" alt>
+                           </div>
+                           <div class="media-body ml-3">
+                              <h6 class="mb-0"><a href="#">Monty Carlo</a></h6>
+                              <p class="mb-0">Admin</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="right-sidebar-toggle bg-primary mt-3">
+                        <i class="ri-arrow-left-line side-left-icon"></i>
+                        <i class="ri-arrow-right-line side-right-icon"><span class="ml-3 d-inline-block">Close Menu</span></i> 
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- Right Sidebar Panel End-->
+         <!-- Page Content  -->
+         <div id="content-page" class="content-page">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-6">
+                     <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                           <div class="iq-header-title">
+                              <h4 class="card-title">Thông tin cơ bản</h4>
+                           </div>
+                        </div>
+                        <div class="iq-card-body">
+                           <div class="acc-edit">
+                              <form>
+                                 <div class="form-group">
+                                    <label for="uname">First Name:</label>
+                                    <input type="text" class="form-control" id="firstName" value="<%=infoUser.firstName%>">
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="uname">Last Name:</label>
+                                    <input type="text" class="form-control" id="lastName" value="<%=infoUser.lastName%>">
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control" id="email" value="<%=infoUser.email%>">
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="altemail">Ngày sinh</label>
+                                    <input type="date" class="form-control" id="dob" name="dob" value="<%=infoUser.birthDay%>">
+                                 </div>
+                                 
+                                 
+                                 <button type="submit" class="btn btn-primary btnSaveInfoBasic">Lưu lại</button>
+                                 <button type="reset" class="btn iq-bg-danger btnCancelInfoBasic">Hủy</button>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-6">
+                     <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                           <div class="iq-header-title">
+                              <h4 class="card-title">Thông tin bổ sung</h4>
+                           </div>
+                        </div>
+                        <div class="iq-card-body">
+                           <div class="acc-edit">
+                              <form>
+                                 <div class="form-group">
+                                    <label for="facebook">Ảnh đại diện:</label>&emsp;&emsp;
+                                    <img style="width: 30%" src="../assets/img/avt.jpg" class="rounded-circle ml-3" alt="Responsive image">&emsp;&emsp;
+                                    <input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple/>
+                                    <label style="color:#50b5ff" for="file"><i class="fa fa-upload"></i> Thay đổi</label>
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="facebook">Mô tả:</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Hãy viết gì đó..."></textarea>
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="facebook">Số điện thoại:</label>
+                                    <input type="text" class="form-control" id="phone" value="<%=infoUser.phone%>">
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="twitter">Thành phố:</label>
+                                    <input type="text" class="form-control" id="twitter" value="<%=infoUser.city%>">
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="google">Công việc hiện tại +:</label>
+                                    <input type="text" class="form-control" id="job" value="Freelancer Developer">
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="instagram">Từng làm việc:</label>
+                                    <input type="text" class="form-control" id="work_place" value="www.instagram.com">
+                                 </div>
+                                 
+                                 <div class="form-group">
+                                    <label for="instagram">Tình trạng quan hệ: </label>
+                                    <div class="form-check">
+                                       <div class="custom-control custom-radio custom-control-inline">
+                                          <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked>
+                                          <label class="custom-control-label" for="customRadio1"> Độc thân</label>
+                                       </div>
+                                       <div class="custom-control custom-radio custom-control-inline">
+                                          <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                                          <label class="custom-control-label" for="customRadio2"> Đang hẹn hò</label>
+                                       </div>
+                                       <div class="custom-control custom-radio custom-control-inline">
+                                          <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+                                          <label class="custom-control-label" for="customRadio3"> Đã kết hôn</label>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="form-group">
+                                    <label class="d-block">Sở thích:</label>
+                                    <div style="margin-left: 20px">
+                                       <div class="custom-control custom-checkbox custom-control-inline">
+                                          <input type="checkbox" class="custom-control-input" id="english" checked>
+                                          <label class="custom-control-label" for="english">Nấu ăn</label>
+                                       </div>
+                                       <div class="custom-control custom-checkbox custom-control-inline">
+                                          <input type="checkbox" class="custom-control-input" id="french" checked>
+                                          <label class="custom-control-label" for="french">Ca hát</label>
+                                       </div>
+                                       <div class="custom-control custom-checkbox custom-control-inline">
+                                          <input type="checkbox" class="custom-control-input" id="hindi">
+                                          <label class="custom-control-label" for="hindi">Thể thao</label>
+                                       </div>
+                                       <div class="custom-control custom-checkbox custom-control-inline">
+                                          <input type="checkbox" class="custom-control-input" id="spanish" checked>
+                                          <label class="custom-control-label" for="spanish">Du lịch</label>
+                                       </div>
+                                       <div class="custom-control custom-checkbox custom-control-inline">
+                                          <input type="checkbox" class="custom-control-input" id="arabic">
+                                          <label class="custom-control-label" for="arabic">Lập trình</label>
+                                       </div>
+                                       <div class="custom-control custom-checkbox custom-control-inline">
+                                          <input type="checkbox" class="custom-control-input" id="italian">
+                                          <label class="custom-control-label" for="italian">Xem phim</label>
+                                       </div>
+                                    </div>
+                                    <br>
+                                 </div>
+                                 <button type="submit" class="btn btn-primary btnSaveInfoAdditional">Lưu lại</button>
+                                 <button type="reset" class="btn iq-bg-danger btnCancleAdditional">Hủy</button>
+                              </form>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <% } %>
+      </div>
+<%- include ('../partials/footer') %>
+
+<script>
+   var inputs = document.querySelectorAll( '.inputfile' );
+   Array.prototype.forEach.call( inputs, function( input )
+   {
+      var label	 = input.nextElementSibling,
+         labelVal = label.innerHTML;
+
+      input.addEventListener( 'change', function( e )
+      {
+         var fileName = '';
+         if( this.files && this.files.length > 1 )
+            fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+         else
+            fileName = e.target.value.split( '\\' ).pop();
+
+         if( fileName )
+            label.querySelector( 'span' ).innerHTML = fileName;
+         else
+            label.innerHTML = labelVal;
+      });
+   });
+</script>
+      

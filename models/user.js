@@ -1,10 +1,10 @@
-const USER_COLL= require('../database/user-coll');
+const USER_COLL = require('../database/user-coll');
 
 const { hash, compare } = require('bcrypt');
 const { sign, verify } = require('../utils/jwt');
 
 module.exports = class User {
-    static register(email, password, fullname) {
+    static register(email, password, firstName, lastName) {
         return new Promise(async resolve => {
             try {
                 let checkExist = await USER_COLL.findOne({ email });
@@ -13,7 +13,7 @@ module.exports = class User {
                     return resolve({ error: true, message: 'email_existed' });
 
                 let hashPassword = await hash(password, 8);
-                let newUser = new USER_COLL({ fullname, email, password: hashPassword });
+                let newUser = new USER_COLL({ firstName, lastName, email, password: hashPassword });
 
                 let infoUser = await newUser.save();
 
@@ -74,6 +74,36 @@ module.exports = class User {
                 if (!infoUser) return resolve({ error: true, message: 'cannot_get_list_data' });
 
                 return resolve({ error: false, data: infoUser });
+
+            } catch (error) {
+
+                return resolve({ error: true, message: error.message });
+            }
+        })
+    }
+
+    static updateInfoBasic({ userID, firstName, lastName, email, birthday, age, story, phone, city, website }) {
+        return new Promise(async resolve => {
+            try {
+                let dataUpdate = {
+                    firstName, 
+                    lastName, 
+                    email, 
+                    birthday, 
+                    age, 
+                    story, 
+                    phone, 
+                    city, 
+                    website
+                }
+
+                let infoAfterUpdate = await USER_COLL.findByIdAndUpdate(userID, dataUpdate, 
+
+                {new: true});
+
+                if (!infoAfterUpdate) return resolve({ error: true, message: 'cannot_update_data' });
+
+                return resolve({ error: false, data: infoAfterUpdate, message: "update_data_success" });
 
             } catch (error) {
 
